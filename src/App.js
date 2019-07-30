@@ -1,31 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Container } from '@material-ui/core';
 import './App.css';
 // import MuiTreeView from './components/MuiTreeView';
 import FileExplorer from './components/FileExplorer';
-
-const tree = [
-  {
-    value: 'Parent A',
-    nodes: [{ value: 'Child A' }, { value: 'Child B' }],
-  },
-  {
-    value: 'Parent B',
-    nodes: [
-      {
-        value: 'Child C',
-      },
-      {
-        value: 'Parent C',
-        nodes: [
-          { value: 'Child D', id: 'example-id' },
-          { value: 'Child E' },
-          { value: 'Child F' },
-        ],
-      },
-    ],
-  },
-];
 
 function App() {
   return (
