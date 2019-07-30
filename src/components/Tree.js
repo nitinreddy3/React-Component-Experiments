@@ -1,21 +1,12 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import values from 'lodash/values';
 import PropTypes from 'prop-types';
 import { each, get, last } from 'lodash';
 import TreeNode from './TreeNode';
-import firebase from '../firebase';
-
-// firebase.firestore().collection('users').add({
-//     username: 'nitin.reddy',
-//     profile: 'github',
-// });
-
 
 const Tree = (props) => {
 
     const { selectedProfile, nodes, setNodes } = props;
-    const { repositoryName, url } = selectedProfile;
-
     const [isLoading, setIsLoading] = useState(false);
 
     const getResponse = async (node) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFile, FaFolder, FaFolderOpen, FaChevronDown, FaChevronRight, FaCodeBranch, FaUsersCog, FaTag, FaPlus, FaMinus } from 'react-icons/fa';
+import { FaFolder, FaCodeBranch, FaUsersCog, FaTag, FaPlus, FaMinus } from 'react-icons/fa';
 import { GoRepo, GoIssueOpened, GoGitCommit } from 'react-icons/go';
 import styled from 'styled-components';
 import last from 'lodash/last';
@@ -28,11 +28,13 @@ const StyledTreeNode = styled.div`
   &:hover {
     background: lightgray;
   }
+  cursor: 'pointer';
 `;
 
 const NodeIcon = styled.div`
   font-size: 12px;
   margin-right: ${props => props.marginRight ? props.marginRight : 5}px;
+  cursor: 'pointer';
 `;
 
 const getNodeLabel = (node) => last(node.path.split('/'));
