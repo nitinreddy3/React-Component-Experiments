@@ -45,6 +45,7 @@ const FileExplorer = (props) => {
     url: ''
   });
 
+  const [positionVertical, setPositionVertical] = useState(0);
   const [profiles, setProfiles] = useState([]);
 
   const [open, setOpen] = useState(false);
@@ -95,17 +96,19 @@ const FileExplorer = (props) => {
       const profiles = snapshot.docs.map((doc) => ({
         id: doc.id,
         checked: false,
+        open: false,
         ...doc.data()
       }))
       setProfiles(profiles);
     })
   };
 
-  const addProfile = (e) => {
+  const addProfile = async (e) => {
     e.preventDefault();
     try {
-      const userRef = firebase.firestore().collection('users');
-      userRef.add(profile);
+      const userRef = await firebase.firestore().collection('users');
+      const data = await userRef.add(profile);
+      console.log(data);
       getResponse();
       setOpen(false);
     } catch (err) {

@@ -9,9 +9,12 @@
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",
+    "apollo-server-express": "^2.8.0",
     "classnames": "^2.2.6",
+    "express": "^4.17.1",
     "fast-memoize": "^2.5.1",
     "firebase": "^6.3.3",
+    "graphql": "^14.4.2",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
