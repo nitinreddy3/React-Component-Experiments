@@ -28,7 +28,7 @@ const StyledTreeNode = styled.div`
   &:hover {
     background: lightgray;
   }
-  cursor: 'pointer';
+  cursor: pointer;
 `;
 
 const NodeIcon = styled.div`
@@ -51,22 +51,19 @@ const selectIcon = label =>
     }[label]);
 
 const TreeNode = (props) => {
-    const { node, getChildNodes, level, onToggle, onNodeSelect, isLoading } = props;
+    const { node, getChildNodes, level, onToggle, isLoading } = props;
     const classes = useStyles();
     return (
         <React.Fragment>
-            <StyledTreeNode level={level} type={node.type}>
-                <NodeIcon onClick={() => onToggle(node)}>
+            <StyledTreeNode level={level} type={node.type} onClick={() => onToggle(node)}>
+                <NodeIcon>
                     {node.isOpen ? <FaMinus /> : <FaPlus />}
                 </NodeIcon>
-
                 <NodeIcon marginRight={10}>
                     {node.isOpen === true && selectIcon(node.type)}
                     {!node.isOpen && selectIcon(node.type)}
                 </NodeIcon>
-
-
-                <span role="button" onClick={() => onNodeSelect(node)}>
+                <span role="button">
                     {getNodeLabel(node)}
                 </span>
             </StyledTreeNode>

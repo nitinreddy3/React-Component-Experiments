@@ -13,7 +13,6 @@ import Edit from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 import { isEmpty, omit } from 'lodash';
-import useScroll from './useScroll';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -77,11 +76,13 @@ const FileExplorer = (props) => {
 
   const handleChange = event => {
     const { id, value } = event.target;
-    if (isEmpty(selectedProfile)) {
-      setProfile({ ...profile, [id]: value });
-    } else {
-      setSelectedProfile({ ...selectedProfile, [id]: value });
-    }
+    setProfile({ ...profile, [id]: value });
+  };
+
+
+  const handleChangeEdit = event => {
+    const { id, value } = event.target;
+    setSelectedProfile({ ...selectedProfile, [id]: value });
   };
 
   const handleCloseDelete = () => {
@@ -107,9 +108,7 @@ const FileExplorer = (props) => {
   const addProfile = async (e) => {
     e.preventDefault();
     try {
-      const userRef = await firebase.firestore().collection('users');
-      const data = await userRef.add(profile);
-      console.log(data);
+      firebase.firestore().collection('users').add(profile);
       getResponse();
       setOpen(false);
     } catch (err) {
@@ -193,19 +192,19 @@ const FileExplorer = (props) => {
     </Grid>
     <Grid item xs={"auto"} sm={9}>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add a user profile</DialogTitle>
+        <DialogTitle id="form-dialog-title">Add repository</DialogTitle>
         <DialogContent>
           <Profile profileData={profile} handleChange={handleChange} handleSubmit={addProfile} handleClose={handleClose} />
         </DialogContent>
       </Dialog>
       <Dialog open={openEditModal} onClose={handleCloseEditModal} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Update profile</DialogTitle>
+        <DialogTitle id="form-dialog-title">Update repository</DialogTitle>
         <DialogContent>
-          <Profile profileData={selectedProfile} handleChange={handleChange} handleSubmit={updateProfile} handleClose={handleCloseEditModal} />
+          <Profile profileData={selectedProfile} handleChange={handleChangeEdit} handleSubmit={updateProfile} handleClose={handleCloseEditModal} />
         </DialogContent>
       </Dialog>
       <Dialog open={openDeleteModal} onClose={handleCloseDelete} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add a user profile</DialogTitle>
+        <DialogTitle id="form-dialog-title">Delete a repository</DialogTitle>
         <DialogContent>
           Do you want to delete the profile?
         </DialogContent>

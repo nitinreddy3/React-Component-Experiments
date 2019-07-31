@@ -4,10 +4,7 @@ import { filter, map, isEqual } from 'lodash';
 import Paper from '@material-ui/core/Paper';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Typography from '@material-ui/core/Typography';
 
 const ITEM_HEIGHT = 48;
 
@@ -24,6 +21,10 @@ const useStyles = makeStyles(theme => ({
     moreBtn: {
         position: "absolute",
         right: 0,
+    },
+    typography: {
+        textAlign: 'left',
+        color: 'black'
     }
 }));
 
@@ -49,7 +50,9 @@ const ProfileList = props => {
     return (
         <div className={classes.root}><h1> Profiles</h1>
             <Paper className={classes.paper}>
-                <p style={{ textAlign: 'left' }}>Github</p>
+                <Typography className={classes.typography} variant="h6" gutterBottom>
+                    Github
+                </Typography>
                 {map(filterProfiles('github'), item => {
                     return (<ListItem
                         key={item.id}
@@ -64,7 +67,9 @@ const ProfileList = props => {
                 })}
             </Paper>
             <Paper className={classes.paper}>
-                <p style={{ textAlign: 'left' }}>Jira</p>
+                <Typography className={classes.typography} variant="h6" gutterBottom>
+                    Jira
+                </Typography>
                 {map(filterProfiles('jira'), item => {
                     return (<ListItem key={item.id}
                         button

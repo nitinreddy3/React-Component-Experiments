@@ -6,7 +6,7 @@ const useScroll = loading => {
         // when component re-renders, it causes window.scrollY to be 0. We don't want
         // to update state if scrollY is 0. because scroll restoration breaks.
         if (!loading && window.scrollY !== 0) {
-            setScrollPos(window.scrollY + 100);
+            setScrollPos(window.scrollY);
         }
     };
 
@@ -19,7 +19,8 @@ const useScroll = loading => {
     // restore scroll whenever loading changes
     useEffect(
         () => {
-            window.scrollTo(0, scrollPos);
+            window.scroll({ top: scrollPos, left: 0, behavior: 'smooth' })
+            // window.scrollTo(0, scrollPos);
         },
         [loading]
     );
