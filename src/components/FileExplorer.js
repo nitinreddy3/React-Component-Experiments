@@ -12,7 +12,8 @@ import ProfileList from './ProfileList';
 import Edit from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
-import { isEmpty, omit } from 'lodash'
+import { isEmpty, omit } from 'lodash';
+import useScroll from './useScroll';
 
 const useStyles = makeStyles(theme => ({
   button: {

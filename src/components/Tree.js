@@ -3,14 +3,16 @@ import values from 'lodash/values';
 import PropTypes from 'prop-types';
 import { each, get, last } from 'lodash';
 import TreeNode from './TreeNode';
+import useScroll from './useScroll';
 
 const Tree = (props) => {
 
     const { selectedProfile, nodes, setNodes } = props;
     const [isLoading, setIsLoading] = useState(false);
+    useScroll(isLoading);
 
     const getResponse = async (node) => {
-        setIsLoading(true);
+        await setIsLoading(true);
         try {
             const { apiUrl } = node;
             const { username, password } = selectedProfile;
@@ -23,11 +25,11 @@ const Tree = (props) => {
             })
 
             const apiResponse = await response.json();
-            setNodes(formatData(apiResponse, node, apiUrl));
-            setIsLoading(false);
+            await setNodes(formatData(apiResponse, node, apiUrl));
+            await setIsLoading(false);
         } catch (err) {
             console.log('Error: ', err);
-            setIsLoading(false);
+            await setIsLoading(false);
         }
     };
 
@@ -82,7 +84,7 @@ const Tree = (props) => {
 
     const onToggle = async (node) => {
         nodes[node.path].isOpen = !node.isOpen;
-        setNodes({ ...nodes, open: !node.isOpen });
+        await setNodes({ ...nodes, open: !node.isOpen });
         if (node.apiUrl && !get(node, 'children.length')) {
             await getResponse(node);
         } else if (!get(node, 'children.length')) {
