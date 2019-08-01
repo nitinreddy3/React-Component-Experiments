@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import last from 'lodash/last';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 const getPaddingLeft = (level, type) => {
     let paddingLeft = level * 20;
@@ -67,15 +66,14 @@ const TreeNode = (props) => {
                     {getNodeLabel(node)}
                 </span>
             </StyledTreeNode>
-
-            {!isLoading ? node.isOpen && getChildNodes(node).map((childNode, i) => (
+            {node.isOpen && getChildNodes(node).map((childNode, i) => (
                 <TreeNode
                     {...props}
                     node={childNode}
                     level={level + 1}
                     key={i}
                 />
-            )) : <CircularProgress className={classes.progress} />}
+            ))}
         </React.Fragment>
     );
 }

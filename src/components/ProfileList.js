@@ -49,7 +49,7 @@ const ProfileList = props => {
 
     return (
         <div className={classes.root}><h1> Profiles</h1>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} disableSticky={false}>
                 <Typography className={classes.typography} variant="h6" gutterBottom>
                     Github
                 </Typography>
@@ -66,7 +66,7 @@ const ProfileList = props => {
                     </ListItem>)
                 })}
             </Paper>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} disableSticky={false}>
                 <Typography className={classes.typography} variant="h6" gutterBottom>
                     Jira
                 </Typography>

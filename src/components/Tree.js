@@ -4,8 +4,27 @@ import PropTypes from 'prop-types';
 import { each, get, last } from 'lodash';
 import TreeNode from './TreeNode';
 import useScroll from './useScroll';
+import Snackbar from '@material-ui/core/Snackbar';
+import MySnackbarContentWrapper from './MySnackbarContentWrapper';
+import { makeStyles } from '@material-ui/core/styles';
+import { Paper } from '@material-ui/core';
+
+const useStyles2 = makeStyles(theme => ({
+    margin: {
+        margin: theme.spacing(1),
+    },
+    paper: {
+        position: 'relative',
+        height: '80vh',
+        minHeight: '100',
+        overflowY: 'auto',
+        padding: 10
+    }
+}));
 
 const Tree = (props) => {
+
+    const classes = useStyles2();
 
     const { selectedProfile, nodes, setNodes } = props;
     const [isLoading, setIsLoading] = useState(false);
@@ -102,7 +121,14 @@ const Tree = (props) => {
 
     const rootNodes = getRootNodes();
     return (
-        <div>
+        <Paper className={classes.paper}>
+            {
+                isLoading &&
+                <MySnackbarContentWrapper
+                    variant="info"
+                    className={classes.margin}
+                    message="Loading..."
+                />}
             {rootNodes.length ? rootNodes.map((node, i) => (
                 <TreeNode
                     node={node}
@@ -113,7 +139,7 @@ const Tree = (props) => {
                     key={i}
                 />
             )) : <p>No profile is selected</p>}
-        </div>
+        </Paper>
     )
 };
 

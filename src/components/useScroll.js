@@ -19,8 +19,7 @@ const useScroll = loading => {
     // restore scroll whenever loading changes
     useEffect(
         () => {
-            window.scroll({ top: scrollPos, left: 0, behavior: 'smooth' })
-            // window.scrollTo(0, scrollPos);
+            window.scroll({ top: scrollPos, left: 0, behavior: 'smooth' });
         },
         [loading]
     );
