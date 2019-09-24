@@ -9,6 +9,18 @@ import MySnackbarContentWrapper from './MySnackbarContentWrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core';
 
+import TreeView from '@material-ui/lab/TreeView';
+import Typography from '@material-ui/core/Typography';
+import MailIcon from '@material-ui/icons/Mail';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Label from '@material-ui/icons/Label';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import InfoIcon from '@material-ui/icons/Info';
+import ForumIcon from '@material-ui/icons/Forum';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+
 const useStyles2 = makeStyles(theme => ({
     margin: {
         margin: theme.spacing(1),
@@ -101,7 +113,8 @@ const Tree = (props) => {
         return node.children.map(path => nodes[path]);
     }
 
-    const onToggle = async (node) => {
+    const onToggle = async (nodeId) => {
+        let node = nodes[nodeId];
         nodes[node.path].isOpen = !node.isOpen;
         await setNodes({ ...nodes, open: !node.isOpen });
         if (node.apiUrl && !get(node, 'children.length')) {
@@ -130,14 +143,25 @@ const Tree = (props) => {
                     message="Loading..."
                 />}
             {rootNodes.length ? rootNodes.map((node, i) => (
-                <TreeNode
-                    node={node}
-                    getChildNodes={getChildNodes}
-                    onToggle={onToggle}
-                    onNodeSelect={onNodeSelect}
-                    isLoading={isLoading}
-                    key={i}
-                />
+                <TreeView
+                    defaultCollapseIcon={<ArrowDropDownIcon />}
+                    defaultExpandIcon={<ArrowRightIcon />}
+                    defaultEndIcon={<div style={{ width: 24 }} />}
+                    onNodeToggle={
+                        (nodeId, expanded) => {
+                            onToggle(nodeId)
+                        }
+                    }
+                >
+                    <TreeNode
+                        node={node}
+                        getChildNodes={getChildNodes}
+                        onToggle={onToggle}
+                        onNodeSelect={onNodeSelect}
+                        isLoading={isLoading}
+                        key={i}
+                    />
+                </TreeView>
             )) : <p>No profile is selected</p>}
         </Paper>
     )
