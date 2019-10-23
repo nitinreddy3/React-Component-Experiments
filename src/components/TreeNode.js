@@ -4,7 +4,21 @@ import { GoRepo, GoIssueOpened, GoGitCommit } from 'react-icons/go';
 import styled from 'styled-components';
 import last from 'lodash/last';
 import PropTypes from 'prop-types';
+import TreeView from '@material-ui/lab/TreeView';
+import StyledTreeItem from './StyledTreeItem';
 import { makeStyles } from '@material-ui/core/styles';
+
+
+import Typography from '@material-ui/core/Typography';
+import MailIcon from '@material-ui/icons/Mail';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Label from '@material-ui/icons/Label';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import InfoIcon from '@material-ui/icons/Info';
+import ForumIcon from '@material-ui/icons/Forum';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 const getPaddingLeft = (level, type) => {
     let paddingLeft = level * 20;
@@ -36,17 +50,17 @@ const NodeIcon = styled.div`
   cursor: 'pointer';
 `;
 
-const getNodeLabel = (node) => last(node.path.split('/'));
+const getNodeLabel = (path) => last(path.split('/'));
 
 const selectIcon = label =>
     ({
-        branches: <FaCodeBranch />,
-        orgs: <FaUsersCog />,
-        folder: <FaFolder />,
-        tags: <FaTag />,
-        issues: <GoIssueOpened />,
-        repos: <GoRepo />,
-        commits: <GoGitCommit />
+        branches: FaCodeBranch,
+        orgs: FaUsersCog,
+        folder: FaFolder,
+        tags: FaTag,
+        issues: GoIssueOpened,
+        repos: GoRepo,
+        commits: GoGitCommit
     }[label]);
 
 const TreeNode = (props) => {
@@ -54,26 +68,16 @@ const TreeNode = (props) => {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <StyledTreeNode level={level} type={node.type} onClick={() => onToggle(node)}>
-                <NodeIcon>
-                    {node.isOpen ? <FaMinus /> : <FaPlus />}
-                </NodeIcon>
-                <NodeIcon marginRight={10}>
-                    {node.isOpen === true && selectIcon(node.type)}
-                    {!node.isOpen && selectIcon(node.type)}
-                </NodeIcon>
-                <span role="button">
-                    {getNodeLabel(node)}
-                </span>
-            </StyledTreeNode>
-            {node.isOpen && getChildNodes(node).map((childNode, i) => (
-                <TreeNode
-                    {...props}
-                    node={childNode}
-                    level={level + 1}
-                    key={i}
-                />
-            ))}
+            <StyledTreeItem level={level} type={node.type} nodeId={node.path} labelText={getNodeLabel(node.path)} labelIcon={selectIcon(node.type)} >
+                {getChildNodes(node).map((childNode, i) => (
+                    <TreeNode
+                        {...props}
+                        node={childNode}
+                        level={level + 1}
+                        key={i}
+                    />
+                ))}
+            </StyledTreeItem>
         </React.Fragment>
     );
 }
