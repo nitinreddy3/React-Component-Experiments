@@ -23,7 +23,7 @@ class BarChart extends Component {
             .attr("x", (d, i) => i * 70)
             .attr("y", (d, i) => h - 10 * d)
             .attr("width", 65)
-            .attr("height", (d, i) => d * 10)
+            .attr("height", (d, i) => d * 60)
             .attr("fill", "red")
     }
 

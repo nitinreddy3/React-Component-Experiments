@@ -4,6 +4,7 @@ import './App.css';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import FileExplorer from './components/FileExplorer';
 import BarChart from './components/BarChart';
+import SimpleChart from './components/SimpleChart';
 import HeaderSliderMenu from './components/HeaderSliderMenu';
 
 const useStyles = makeStyles(theme => ({
@@ -17,12 +18,13 @@ function App() {
   const theme = useTheme();
   return (
     <div className={classes.root}>
-      <HeaderSliderMenu />
-      <Container maxWidth="xl">
-        {/* <FileExplorer /> */}
-        <BarChart />
-        {/* <BarChart1 /> */}
-      </Container>
+      {/* <HeaderSliderMenu /> */}
+      {/* <Container maxWidth="xl"> */}
+      {/* <FileExplorer /> */}
+      {/* <BarChart /> */}
+      {/* <BarChart1 /> */}
+      <SimpleChart />
+      {/* </Container> */}
     </div>
   );
 }
