@@ -141,7 +141,7 @@ export default function MiniDrawer() {
             <List>
                 {['Domain', 'Android'].map((text, index) => (
                     <ListItem button key={text}>
-                        <ListItemIcon></ListItemIcon>
+                        <ListItemIcon>{index === 0 ? <Domain /> : <Android />}</ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
