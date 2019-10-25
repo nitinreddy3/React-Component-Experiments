@@ -5,6 +5,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import FileExplorer from './components/FileExplorer';
 import BarChart from './components/BarChart';
 import SimpleChart from './components/SimpleChart';
+import Network from './components/Network';
+import ScatterChart from './components/ScatterChart';
 import HeaderSliderMenu from './components/HeaderSliderMenu';
 
 const useStyles = makeStyles(theme => ({
@@ -18,13 +20,15 @@ function App() {
   const theme = useTheme();
   return (
     <div className={classes.root}>
-      {/* <HeaderSliderMenu /> */}
+      <HeaderSliderMenu />
       {/* <Container maxWidth="xl"> */}
       {/* <FileExplorer /> */}
       {/* <BarChart /> */}
       {/* <BarChart1 /> */}
-      <SimpleChart />
+      {/* <SimpleChart /> */}
       {/* </Container> */}
+      {/* <Network /> */}
+      <ScatterChart />
     </div>
   );
 }

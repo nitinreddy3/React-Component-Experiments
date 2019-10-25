@@ -19,7 +19,7 @@ const SimpleChart = props => {
         drawChart()
     }, []);
 
-    const [chartData, setChartData] = useState([]);
+    const [chartData, setChartData] = useState(chartJson);
 
     const yAccessor = d => d.maxTemp
 
@@ -50,6 +50,7 @@ const SimpleChart = props => {
         .append('svg')
         .attr('width', window.innerWidth * 0.9)
         .attr('height', window.innerHeight)
+        .style('margin-left', 200)
         .append('g')
         .attr('transform', `translate(${
             margin.left
@@ -63,16 +64,15 @@ const SimpleChart = props => {
     }
 
     const getData = async () => {
-        const response = chartJson;
-        response.forEach(d => {
+        chartData.forEach(d => {
             d.date = parsedTime(d.date)
         })
 
-        x.domain(d3.extent(response, d => d.date))
-        y.domain([0, d3.max(response, d => d.maxTemp)])
+        x.domain(d3.extent(chartData, d => d.date))
+        y.domain([0, d3.max(chartData, d => d.maxTemp)])
 
         svg.append('path')
-            .data([response])
+            .data([chartData])
             .attr('class', classes.line)
             .attr('d', valueLine)
 
