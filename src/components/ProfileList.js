@@ -36,17 +36,6 @@ const ProfileList = props => {
         return filter(profiles, { profileType: key });
     };
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-
-    function handleClick(event) {
-        setAnchorEl(event.currentTarget);
-    }
-
-    function handleClose() {
-        setAnchorEl(null);
-    }
-
     return (
         <div className={classes.root}><h1> Profiles</h1>
             <Paper className={classes.paper} disableSticky={false}>

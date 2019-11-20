@@ -22,13 +22,13 @@ function App() {
     <div className={classes.root}>
       <HeaderSliderMenu />
       {/* <Container maxWidth="xl"> */}
-      {/* <FileExplorer /> */}
+      <FileExplorer /> 
       {/* <BarChart /> */}
       {/* <BarChart1 /> */}
       {/* <SimpleChart /> */}
       {/* </Container> */}
       {/* <Network /> */}
-      <ScatterChart />
+      {/*<ScatterChart /> */}
     </div>
   );
 }
