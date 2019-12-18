@@ -7,6 +7,7 @@ import BarChart from './components/BarChart';
 import SimpleChart from './components/SimpleChart';
 import Network from './components/Network';
 import ScatterChart from './components/ScatterChart';
+import RadialChart from './components/RadialChart';
 import HeaderSliderMenu from './components/HeaderSliderMenu';
 
 const useStyles = makeStyles(theme => ({
@@ -22,13 +23,14 @@ function App() {
     <div className={classes.root}>
       <HeaderSliderMenu />
       {/* <Container maxWidth="xl"> */}
-      <FileExplorer /> 
+      {/*<FileExplorer /> */}
       {/* <BarChart /> */}
       {/* <BarChart1 /> */}
       {/* <SimpleChart /> */}
       {/* </Container> */}
       {/* <Network /> */}
       {/*<ScatterChart /> */}
+      <RadialChart/>
     </div>
   );
 }
