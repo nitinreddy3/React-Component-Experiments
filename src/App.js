@@ -10,6 +10,7 @@ import ScatterChart from './components/ScatterChart';
 import RadialChart from './components/RadialChart';
 import HeaderSliderMenu from './components/HeaderSliderMenu';
 import DragnDrop from './components/DragnDrop';
+import CounterApp from './components/CounterApp'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,14 +24,15 @@ function App() {
   return (
     <div className={classes.root}>
       <HeaderSliderMenu />
-      <Container style={{marginTop: 100 }} maxWidth="xl"> 
-        <FileExplorer /> 
-      {/* <BarChart /> */}
-      {/* <BarChart1 /> */}
-        {/* <SimpleChart*/} 
-        {/*<DragnDrop/>*/} 
-      </Container> 
-      {/*<Network />*/} 
+      <Container style={{ marginTop: 100 }} maxWidth="xl">
+        {/*<FileExplorer />*/}
+        {/* <BarChart /> */}
+        {/* <BarChart1 /> */}
+        {/* <SimpleChart*/}
+        {/*<DragnDrop/>*/}
+        <CounterApp />
+      </Container>
+      {/*<Network />*/}
       {/*<ScatterChart /> */}
       {/*<RadialChart/>*/}
     </div>
