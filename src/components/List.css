@@ -1,0 +1,23 @@
+.list-outer {
+  width: 450px;
+  margin: 0 0px;
+}
+
+.list-inner {
+  border: 1px solid rgb(204, 204, 204);
+  background-color: #fff;
+  margin: 0 50px;
+}
+
+.list-body {
+  overflow: hidden;
+}
+
+.list-header {
+  padding: 10px;
+}
+
+.list-title {
+  font-size: 16;
+  font-weight: 'bold'
+}

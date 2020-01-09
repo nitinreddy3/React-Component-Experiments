@@ -161,18 +161,13 @@ const FileExplorer = (props) => {
   const classes = useStyles();
 
   return (<Grid container spacing={3}>
-    <Grid style={{marginTop: 100 }}  item xs={12}>
-      {
-        !isEmpty(selectedProfile) &&
-        <>
-          <Button className={classes.button} variant="contained" color="primary" onClick={handleOpenEditModal}>
-            Update <Edit className={classes.rightIcon} />
-          </Button>
-          <Button className={classes.button} variant="contained" color="primary" onClick={handleOpenDelete}>
-            Delete <DeleteIcon className={classes.rightIcon} />
-          </Button>
-        </>
-      }
+    <Grid style={{ marginTop: 100 }} item xs={12}>
+      <Button className={classes.button} variant="contained" color="primary" onClick={handleOpenEditModal} disabled={isEmpty(selectedProfile)}>
+        Update <Edit className={classes.rightIcon} />
+      </Button>
+      <Button className={classes.button} variant="contained" color="primary" onClick={handleOpenDelete} disabled={isEmpty(selectedProfile)}>
+        Delete <DeleteIcon className={classes.rightIcon} />
+      </Button>
       <Button className={classes.button} variant="contained" color="primary" onClick={handleOpen}>
         Add user profile
       </Button>
