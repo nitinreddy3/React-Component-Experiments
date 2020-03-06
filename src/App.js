@@ -29,8 +29,8 @@ function App() {
         {/* <BarChart /> */}
         {/* <BarChart1 /> */}
         {/* <SimpleChart*/}
-        {/*<DragnDrop/>*/}
-        <CounterApp />
+        <DragnDrop />
+        {/*<CounterApp />*/}
       </Container>
       {/*<Network />*/}
       {/*<ScatterChart /> */}
