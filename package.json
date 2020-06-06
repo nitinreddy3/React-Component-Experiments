@@ -19,7 +19,7 @@
     "@tensorflow/tfjs-vis": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
-    "apollo-server-express": "^2.8.0",
+    "apollo-server-express": "^2.14.2",
     "babel-eslint": "10.0.1",
     "babel-jest": "24.7.1",
     "babel-loader": "8.0.5",
